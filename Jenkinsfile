@@ -19,8 +19,9 @@ pipeline {
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                
-                sh "sudo pip install --user --no-cache-dir --upgrade -r requirements.txt"
+                sh "virtualenv pp -p python3"
+                sh "source pp/bin/activate"
+                sh "pip install --user --no-cache-dir --upgrade -r requirements.txt"
             }
         }
         stage('Compile') {
