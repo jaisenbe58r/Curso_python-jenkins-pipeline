@@ -3,7 +3,7 @@
 pipeline {
     agent {
         docker {
-            image 'python:3.7'
+            image 'python:3.7-slim-stretch'
         }
     }
 
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "pip install --user -r requirements.txt"
+                sh "pip install --user  --upgrade -r requirements.txt"
             }
         }
         stage('Compile') {
