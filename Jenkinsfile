@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "$PWD"
+                
                 sh "pip install --user --no-cache-dir --upgrade -r requirements.txt"
             }
         }
