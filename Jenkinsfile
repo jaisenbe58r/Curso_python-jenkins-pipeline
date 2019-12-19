@@ -7,12 +7,18 @@ pipeline {
         }
     }
 
+    environment{
+
+        PASS = credentials('registry-pass')
+    }
+
+
     stages {
         stage('Environment preparation') {
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "pip install -r requirements.txt"
+                sh "pip install --user -r requirements.txt"
             }
         }
         stage('Compile') {
@@ -47,14 +53,14 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 echo "-=- build Docker image -=-"
-                sh "docker build -t restalion/python-jenkins-pipeline:0.1 ."
+                sh "docker build -t jaisenbe58r/python-jenkins-pipeline:0.1 ."
             }
         }
 
         stage('Run Docker image') {
             steps {
                 echo "-=- run Docker image -=-"
-                sh "docker run --name python-jenkins-pipeline --detach --rm --network ci -p 5001:5000 restalion/python-jenkins-pipeline:0.1"
+                sh "docker run --name python-jenkins-pipeline --detach --rm --network ci -p 5001:5000 jaisenbe58r/python-jenkins-pipeline:0.1"
             }
         }
 
@@ -89,8 +95,8 @@ pipeline {
         stage('Push Docker image') {
             steps {
                 echo "-=- push Docker image -=-"
-                withDockerRegistry([ credentialsId: "werdar-wedartg-uiny67-adsuja0-12njkn3", url: "" ]) {
-                    sh "docker push restalion/python-jenkins-pipeline:0.1"
+                withDockerRegistry([ credentialsId: PASS, url: "" ]) {
+                    sh "docker push jaisenbe58r/python-jenkins-pipeline:0.1"
                 }
                 
                 //sh "mvn docker:push"
