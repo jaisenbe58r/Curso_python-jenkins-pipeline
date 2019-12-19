@@ -14,12 +14,12 @@ pipeline {
 
 
     stages {
-        
+
         stage('Environment preparation') {
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "ls"
+                sh "$PWD"
                 sh "pip install --user --no-cache-dir --upgrade -r requirements.txt"
             }
         }
