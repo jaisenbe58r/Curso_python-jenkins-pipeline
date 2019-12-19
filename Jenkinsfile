@@ -20,7 +20,7 @@ pipeline {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
                 
-                sh "pip install --user --no-cache-dir --upgrade -r requirements.txt"
+                sh "sudo pip install --user --no-cache-dir --upgrade -r requirements.txt"
             }
         }
         stage('Compile') {
