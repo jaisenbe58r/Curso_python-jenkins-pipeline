@@ -5,5 +5,6 @@ class BasicFunction(object):
     def increment_state(self):
         self.state += 1
 
+
     def clear_state(self):
         self.state = 0
