@@ -3,7 +3,7 @@
 pipeline {
     agent {
         docker {
-            image 'python:3.7-slim-stretch'
+            image 'python'
         }
     }
 
@@ -19,8 +19,6 @@ pipeline {
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "virtualenv pp -p python3"
-                sh "source pp/bin/activate"
                 sh "pip install --user --no-cache-dir --upgrade -r requirements.txt"
             }
         }
