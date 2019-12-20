@@ -98,6 +98,7 @@ pipeline {
                 echo "-=- push Docker image -=-"
                 withDockerRegistry([ credentialsId: PASS, url: "" ]) {
                     sh "docker push jaisenbe58r/python-jenkins-pipeline:0.1"
+                    
                 }
                 
                 //sh "mvn docker:push"
