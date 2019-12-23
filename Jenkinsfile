@@ -18,7 +18,7 @@ pipeline {
         stage('Environment preparation') {
             steps {
                 echo "-=- preparing project environment -=-"
-                sh "cd /usr/src/app"
+                
                 // Python dependencies
                 sh "pip install --user --no-cache-dir  -r requirements.txt"
             }
