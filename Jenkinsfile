@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('Unit tests') {
+/*         stage('Unit tests') {
             steps {
                 echo "-=- execute unit tests -=-"
                 sh "nosetests -v test"
@@ -44,7 +44,7 @@ pipeline {
                 sh "cosmic-ray init config.yml jenkins_session && cosmic-ray --verbose exec jenkins_session && cosmic-ray dump jenkins_session | cr-report"    
             }
         }
-
+ */
         stage('Package') {
             steps {
                 echo "-=- packaging project -=-"
