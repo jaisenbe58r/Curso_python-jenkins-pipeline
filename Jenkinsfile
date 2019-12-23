@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "pip install --no-cache-dir  -r requirements.txt"
+                sh "pip install --user --no-cache-dir  -r requirements.txt"
             }
         }
         stage('Compile') {
@@ -98,7 +98,7 @@ pipeline {
                 echo "-=- push Docker image -=-"
                 withDockerRegistry([ credentialsId: PASS, url: "" ]) {
                     sh "docker push jaisenbe58r/python-jenkins-pipeline:0.1"
-                    
+
                 }
                 
                 //sh "mvn docker:push"
