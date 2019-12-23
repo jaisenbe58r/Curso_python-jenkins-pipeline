@@ -1,5 +1,7 @@
 FROM python:3.7
 
+USER ROOT
+
 # copy all files
 RUN mkdir hello
 COPY . /hello
